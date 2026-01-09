@@ -181,6 +181,20 @@ UNFOLD = {
                     },
                 ],
             },
+            {
+                "title": _("System Settings"),
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": _("General Settings"),
+                        "icon": "settings",
+                        "link": reverse_lazy(
+                            "admin:system_settings_generalsetting_changelist"
+                        ),
+                    },
+                ],
+            },
         ],
     },
 }

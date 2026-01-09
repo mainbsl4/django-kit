@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     # apps
     "apps.users",
     "apps.cms",
+    "apps.system_settings",
 ]
 
 MIDDLEWARE = [
