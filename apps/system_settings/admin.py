@@ -1,7 +1,7 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
 from django.utils.html import format_html
-from .models import GeneralSetting
+from .models import GeneralSetting, SocialMedia
 
 # Register your models here.
 
@@ -76,3 +76,20 @@ class GeneralSettingAdmin(ModelAdmin):
         if GeneralSetting.objects.exists():
             return False
         return True
+
+
+# social media admin
+@admin.register(SocialMedia)
+class SocialMediaAdmin(ModelAdmin):
+    list_display = ("platform_name", "profile_url", "icon_preview", "created_at")
+    search_fields = ("platform_name", "profile_url")
+    readonly_fields = ("icon_preview", "created_at", "updated_at")
+
+    def icon_preview(self, obj):
+        if obj.icon:
+            return format_html('<img src="{}" style="height:32px;" />', obj.icon.url)
+        return "No Icon"
+
+    icon_preview.short_description = "Icon Preview"
+    ordering = ("platform_name",)
+    list_per_page = 20

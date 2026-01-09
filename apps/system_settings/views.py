@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from rest_framework import generics
-from .models import GeneralSetting
-from .serializers import GeneralSettingSerializer
+from rest_framework import generics, filters
+from .models import GeneralSetting, SocialMedia
+from .serializers import GeneralSettingSerializer, SocialMediaSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
@@ -21,6 +22,32 @@ class GeneralSettingList(generics.ListCreateAPIView):
             "success": True,
             "status": status.HTTP_200_OK,
             "message": "General Settings retrieved successfully",
+            "data": self.list(request, *args, **kwargs).data,
+        }
+        return Response(response_data, status=status.HTTP_200_OK)
+
+
+# social media views
+class SocialMediaList(generics.ListCreateAPIView):
+    permission_classes = [AllowAny]
+    queryset = SocialMedia.objects.all()
+    serializer_class = SocialMediaSerializer
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    filterset_fields = ["platform_name"]
+    search_fields = ["platform_name"]
+    ordering_fields = ["created_at", "platform_name"]
+    ordering = ["platform_name"]
+
+    def get(self, request, *args, **kwargs):
+
+        response_data = {
+            "success": True,
+            "status": status.HTTP_200_OK,
+            "message": "Social Media links retrieved successfully",
             "data": self.list(request, *args, **kwargs).data,
         }
         return Response(response_data, status=status.HTTP_200_OK)

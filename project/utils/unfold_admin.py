@@ -193,6 +193,13 @@ UNFOLD = {
                             "admin:system_settings_generalsetting_changelist"
                         ),
                     },
+                    {
+                        "title": _("Social Media"),
+                        "icon": "share",
+                        "link": reverse_lazy(
+                            "admin:system_settings_socialmedia_changelist"
+                        ),
+                    },
                 ],
             },
         ],

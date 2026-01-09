@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import GeneralSetting
+from .models import GeneralSetting, SocialMedia
 
 
 class GeneralSettingSerializer(serializers.ModelSerializer):
@@ -16,4 +16,20 @@ class GeneralSettingSerializer(serializers.ModelSerializer):
             "address",
             "phone",
             "email",
+        ]
+
+
+class SocialMediaSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = SocialMedia
+
+        fields = [
+            "id",
+            "platform_name",
+            "profile_url",
+            "icon",
+            "created_at",
+            "updated_at",
         ]
