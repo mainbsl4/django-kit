@@ -60,10 +60,10 @@ DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 python manage.py migrate
 ```
 
-### 6. Seed Database with Test Users
+### 6. Seed Database with All Data
 
 ```bash
-python manage.py seed_users
+python manage.py seed_all
 ```
 
 This creates:
@@ -74,6 +74,9 @@ This creates:
   - bob.wilson@example.com
   - alice.johnson@example.com
   - charlie.brown@example.com
+- **System Settings**: General settings and social media links
+
+💡 **Individual commands**: `seed_users`, `seed_system_settings` (see [SEED_COMMANDS.md](SEED_COMMANDS.md))
 
 ### 7. Create Static Directory (if needed)
 
@@ -160,16 +163,27 @@ django_kit/
 
 ## 🛠️ Management Commands
 
+### Seed Database (All Data)
+
+```bash
+python manage.py seed_all
+```
+
+Options:
+- `--skip-users` - Skip user seeding
+- `--skip-settings` - Skip system settings seeding
+
+### Individual Seed Commands
+
+```bash
+python manage.py seed_users              # Seed users only
+python manage.py seed_system_settings    # Seed settings only
+```
+
 ### Create Superuser (Manual)
 
 ```bash
 python manage.py createsuperuser
-```
-
-### Seed Database
-
-```bash
-python manage.py seed_users
 ```
 
 ### Make Migrations
