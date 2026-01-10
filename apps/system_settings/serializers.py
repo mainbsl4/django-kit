@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import GeneralSetting, SocialMedia
+from .models import GeneralSetting, SocialMedia, PrivacyPolicy
 
 
 class GeneralSettingSerializer(serializers.ModelSerializer):
@@ -30,6 +30,20 @@ class SocialMediaSerializer(serializers.ModelSerializer):
             "platform_name",
             "profile_url",
             "icon",
+            "created_at",
+            "updated_at",
+        ]
+
+
+# privacy policy serializer
+class PrivacyPolicySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = PrivacyPolicy
+        fields = [
+            "id",
+            "content",
+            "is_active",
             "created_at",
             "updated_at",
         ]

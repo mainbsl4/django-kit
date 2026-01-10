@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from rest_framework import generics, filters
-from .models import GeneralSetting, SocialMedia
-from .serializers import GeneralSettingSerializer, SocialMediaSerializer
+from .models import GeneralSetting, SocialMedia, PrivacyPolicy
+from .serializers import (
+    GeneralSettingSerializer,
+    SocialMediaSerializer,
+    PrivacyPolicySerializer,
+)
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework.response import Response
@@ -51,3 +55,16 @@ class SocialMediaList(generics.ListCreateAPIView):
             "data": self.list(request, *args, **kwargs).data,
         }
         return Response(response_data, status=status.HTTP_200_OK)
+
+
+# privacy policy views
+def get_privacy_policy(request):
+
+    try:
+        privacy_policy = PrivacyPolicy.objects.get(is_active=True)
+
+        context = {"privacy_policy": privacy_policy}
+        return render(request, "privacy_policy.html", context)
+    except PrivacyPolicy.DoesNotExist:
+        context = {"error": "Privacy Policy not found."}
+        return render(request, "privacy_policy.html", context)

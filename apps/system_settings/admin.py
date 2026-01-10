@@ -1,7 +1,7 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
 from django.utils.html import format_html
-from .models import GeneralSetting, SocialMedia
+from .models import GeneralSetting, SocialMedia, PrivacyPolicy
 
 # Register your models here.
 
@@ -93,3 +93,19 @@ class SocialMediaAdmin(ModelAdmin):
     icon_preview.short_description = "Icon Preview"
     ordering = ("platform_name",)
     list_per_page = 20
+
+
+# privacy policy admin
+@admin.register(PrivacyPolicy)
+class PrivacyPolicyAdmin(ModelAdmin):
+    list_display = ("is_active", "created_at", "updated_at")
+    list_filter = ("is_active", "created_at", "updated_at")
+    readonly_fields = ("created_at", "updated_at")
+
+    def has_add_permission(self, request):
+        """
+        Allow only ONE active PrivacyPolicy instance
+        """
+        if PrivacyPolicy.objects.filter(is_active=True).exists():
+            return False
+        return True

@@ -200,6 +200,13 @@ UNFOLD = {
                             "admin:system_settings_socialmedia_changelist"
                         ),
                     },
+                    {
+                        "title": _("Privacy Policy"),
+                        "icon": "privacy_tip",
+                        "link": reverse_lazy(
+                            "admin:system_settings_privacypolicy_changelist"
+                        ),
+                    },
                 ],
             },
             {

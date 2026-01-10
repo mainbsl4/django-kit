@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -26,3 +27,16 @@ class SocialMedia(models.Model):
 
     def __str__(self):
         return self.platform_name
+
+
+# privacy policy
+
+
+class PrivacyPolicy(models.Model):
+    content = RichTextField()
+    is_active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Privacy Policy - {'Active' if self.is_active else 'Inactive'}"
