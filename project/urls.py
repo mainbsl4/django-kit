@@ -25,6 +25,7 @@ urlpatterns = [
     path("api/v1/", include("apps.users.urls")),
     path("api/v1/", include("apps.cms.urls")),
     path("api/v1/", include("apps.system_settings.urls")),
+    path("api/v1/", include("apps.contact_support.urls")),
 ]
 
 if settings.DEBUG:

@@ -202,6 +202,20 @@ UNFOLD = {
                     },
                 ],
             },
+            {
+                "title": _("Contact & Support"),
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": _("Contact Us Messages"),
+                        "icon": "support_agent",
+                        "link": reverse_lazy(
+                            "admin:contact_support_contactus_changelist"
+                        ),
+                    },
+                ],
+            },
         ],
     },
 }

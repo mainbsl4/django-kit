@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "apps.users",
     "apps.cms",
     "apps.system_settings",
+    "apps.contact_support",
 ]
 
 MIDDLEWARE = [
