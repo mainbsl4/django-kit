@@ -223,6 +223,23 @@ UNFOLD = {
                     },
                 ],
             },
+            {
+                "title": _("Subscriptions"),
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": _("Plans"),
+                        "icon": "local_offer",
+                        "link": reverse_lazy("admin:subscriptions_plan_changelist"),
+                    },
+                    {
+                        "title": _("Features"),
+                        "icon": "star_border",
+                        "link": reverse_lazy("admin:subscriptions_feature_changelist"),
+                    },
+                ],
+            },
         ],
     },
 }

@@ -17,6 +17,11 @@ class Command(BaseCommand):
             action='store_true',
             help='Skip seeding system settings',
         )
+        parser.add_argument(
+            '--skip-subscriptions',
+            action='store_true',
+            help='Skip seeding subscription plans',
+        )
 
     def handle(self, *args, **options):
         self.stdout.write(self.style.SUCCESS('=' * 60))
@@ -31,6 +36,9 @@ class Command(BaseCommand):
         
         if not options['skip_settings']:
             seed_commands.append(('seed_system_settings', 'System Settings & Social Media'))
+        
+        if not options['skip_subscriptions']:
+            seed_commands.append(('seed_subscriptions', 'Subscription Plans & Features'))
         
         # Run all seed commands
         total_commands = len(seed_commands)

@@ -12,6 +12,7 @@ python manage.py seed_all
 This command runs all seeding commands at once:
 - ✅ Users & Profiles
 - ✅ System Settings & Social Media
+- ✅ Subscription Plans & Features
 
 ---
 
@@ -42,6 +43,21 @@ python manage.py seed_system_settings
 - General settings (site title, description, contact info)
 - 15 social media platform links
 
+### 3. Seed Subscriptions
+```bash
+python manage.py seed_subscriptions
+```
+
+**Creates:**
+- 15 Features (API Access, Priority Support, Custom Branding, etc.)
+- 6 Subscription Plans:
+  - **Free** - $0/month (Basic features)
+  - **Starter** - $9.99/month (14-day trial)
+  - **Professional** - $29.99/month (Most popular, 30-day trial)
+  - **Business** - $79.99/month (Advanced features)
+  - **Enterprise** - $299.99/month (Full access)
+  - **Professional Annual** - $287.90/year (Save 20%)
+
 ---
 
 ## Advanced Options
@@ -53,6 +69,12 @@ python manage.py seed_all --skip-users
 
 # Seed everything except system settings
 python manage.py seed_all --skip-settings
+
+# Seed everything except subscriptions
+python manage.py seed_all --skip-subscriptions
+
+# Combine multiple skips
+python manage.py seed_all --skip-users --skip-settings
 ```
 
 ### Get Help

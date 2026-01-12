@@ -12,6 +12,7 @@ A modern Django 6.0 starter kit with REST API, JWT authentication, and a beautif
 - **Custom User Model** - Email-based authentication
 - **User Profiles** - Extended user information
 - **Password Reset** - OTP-based password recovery
+- **Subscription System** - Complete subscription plans with features
 - **Media Handling** - Image upload support with Pillow
 - **Static Files** - WhiteNoise for efficient static file serving
 
@@ -75,8 +76,10 @@ This creates:
   - alice.johnson@example.com
   - charlie.brown@example.com
 - **System Settings**: General settings and social media links
+- **Subscription Plans**: 6 plans (Free, Starter, Professional, Business, Enterprise, Annual)
+- **15 Features**: API Access, Priority Support, Custom Branding, and more
 
-💡 **Individual commands**: `seed_users`, `seed_system_settings` (see [SEED_COMMANDS.md](SEED_COMMANDS.md))
+💡 **Individual commands**: `seed_users`, `seed_system_settings`, `seed_subscriptions` (see [SEED_COMMANDS.md](SEED_COMMANDS.md))
 
 ### 7. Create Static Directory (if needed)
 
@@ -140,10 +143,19 @@ Authorization: Bearer <access_token>
 django_kit/
 ├── apps/
 │   ├── cms/              # CMS application
+│   ├── subscriptions/    # Subscription plans & features
+│   │   ├── management/
+│   │   │   └── commands/
+│   │   │       └── seed_subscriptions.py
+│   │   ├── models.py     # Plan, Feature models
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   └── urls.py
 │   └── users/            # User management
 │       ├── management/
 │       │   └── commands/
-│       │       └── seed_users.py
+│       │       ├── seed_users.py
+│       │       └── seed_all.py
 │       ├── models.py     # User, UserProfile, PasswordResetOTP
 │       ├── serializers.py
 │       ├── views.py
@@ -172,12 +184,14 @@ python manage.py seed_all
 Options:
 - `--skip-users` - Skip user seeding
 - `--skip-settings` - Skip system settings seeding
+- `--skip-subscriptions` - Skip subscription plans seeding
 
 ### Individual Seed Commands
 
 ```bash
 python manage.py seed_users              # Seed users only
 python manage.py seed_system_settings    # Seed settings only
+python manage.py seed_subscriptions      # Seed subscription plans only
 ```
 
 ### Create Superuser (Manual)
