@@ -1,7 +1,9 @@
 asgiref==3.11.0
 click==8.3.1
 Django==6.0
+django-ckeditor==6.7.3
 django-filter==25.2
+django-js-asset==3.1.2
 django-query-counter==0.4.2
 django-unfold==0.74.1
 djangorestframework==3.16.1
