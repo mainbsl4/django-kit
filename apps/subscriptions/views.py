@@ -28,16 +28,18 @@ class PlanViewSet(viewsets.ModelViewSet):
     search_fields = ["name", "description"]
     ordering_fields = ["price", "billing_period", "trial_period_days"]
 
-    # def list(self, request):
-    #     queryset = self.filter_queryset(self.get_queryset())
-    #     # serializers = PlanSerializer(queryset, many=True)
-    #     serializers = self.serializer_class(queryset, many=True)
+    def list(self, request):
+        queryset = self.filter_queryset(self.queryset)
+        # serializers = PlanSerializer(queryset, many=True)
+        serializers = self.serializer_class(
+            queryset, many=True, context={"request": request}
+        )
 
-    #     response_data = {
-    #         "success": True,
-    #         "status": status.HTTP_200_OK,
-    #         "message": "List of subscription plans",
-    #         "data": serializers.data,
-    #     }
+        response_data = {
+            "success": True,
+            "status": status.HTTP_200_OK,
+            "message": "List of subscription plans",
+            "data": serializers.data,
+        }
 
-    #     return Response(response_data)
+        return Response(response_data)
