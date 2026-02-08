@@ -181,6 +181,65 @@ UNFOLD = {
                     },
                 ],
             },
+            {
+                "title": _("System Settings"),
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": _("General Settings"),
+                        "icon": "settings",
+                        "link": reverse_lazy(
+                            "admin:system_settings_generalsetting_changelist"
+                        ),
+                    },
+                    {
+                        "title": _("Social Media"),
+                        "icon": "share",
+                        "link": reverse_lazy(
+                            "admin:system_settings_socialmedia_changelist"
+                        ),
+                    },
+                    {
+                        "title": _("Privacy Policy"),
+                        "icon": "privacy_tip",
+                        "link": reverse_lazy(
+                            "admin:system_settings_privacypolicy_changelist"
+                        ),
+                    },
+                ],
+            },
+            {
+                "title": _("Contact & Support"),
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": _("Contact Us Messages"),
+                        "icon": "support_agent",
+                        "link": reverse_lazy(
+                            "admin:contact_support_contactus_changelist"
+                        ),
+                    },
+                ],
+            },
+            {
+                "title": _("Subscriptions"),
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": _("Plans"),
+                        "icon": "local_offer",
+                        "link": reverse_lazy("admin:subscriptions_plan_changelist"),
+                    },
+                    {
+                        "title": _("Features"),
+                        "icon": "star_border",
+                        "link": reverse_lazy("admin:subscriptions_feature_changelist"),
+                    },
+                ],
+            },
         ],
     },
 }

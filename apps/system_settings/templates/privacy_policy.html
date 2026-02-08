@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9fa;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+      font-size: 2.2rem;
+    }
+
+    h2 {
+      margin-top: 28px;
+      margin-bottom: 16px;
+      color: #3498db;
+      font-size: 1.4rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #555;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .last-updated {
+      text-align: center;
+      font-style: italic;
+      color: #7f8c8d;
+      margin-top: 30px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Privacy Policy</h1>
+
+    {% if privacy_policy %}
+      {{ privacy_policy.content|safe }}
+    {% else %}
+      <p>{{ error }}</p>
+    {% endif %}
+
+  </div>
+
+</body>
+</html>
